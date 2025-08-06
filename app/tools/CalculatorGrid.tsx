@@ -99,8 +99,7 @@ export default function CalculatorGrid() {
 function TaxCalculator() {
   const [income, setIncome] = useState('');
   const [deductions, setDeductions] = useState('');
-  const [result, setResult] = useState(null);
-
+  const [result, setResult] = useState<{ tax: number; taxableIncome: number } | null>(null);
   const calculateTax = () => {
     const taxableIncome = parseFloat(income) - parseFloat(deductions || '0');
     let tax = 0;
@@ -113,12 +112,12 @@ function TaxCalculator() {
     else if (taxableIncome > 36000) tax = taxableIncome * 0.10 - 2520;
     else if (taxableIncome > 0) tax = taxableIncome * 0.03;
 
-    setResult({
+    setResult(prevState => ({
+      ...prevState,
       taxableIncome: Math.max(0, taxableIncome),
       tax: Math.max(0, tax),
       afterTaxIncome: Math.max(0, taxableIncome - tax)
-    });
-  };
+    }));
 
   return (
     <div>
