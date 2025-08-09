@@ -305,3 +305,5 @@ function InsuranceCalculator() {
     </div>
   );
 }
+} 
+
