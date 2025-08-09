@@ -97,6 +97,13 @@ export default function CalculatorGrid() {
 }
 
 function TaxCalculator() {
+  return (
+    <div>
+      <h3 className="text-2xl font-bold text-gray-900 mb-6">税务计算器</h3>
+      <p className="text-gray-600 mb-4">该工具正在开发中，敬请期待...</p>
+    </div>
+  );
+}
   const [income, setIncome] = useState('');
   const [deductions, setDeductions] = useState('');
   const [result, setResult] = useState<{ tax: number; taxableIncome: number } | null>(null);
